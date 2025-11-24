@@ -1,0 +1,142 @@
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.searchInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+}
+
+.selectIInput {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    min-width: 150px;
+    background: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cardImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.cardContent {
+    padding: 15px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.category {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.badge_approved { background: #d4edda; color: #155724; }
+.badge_rejected { background: #f8d7da; color: #721c24; }
+.badge_pending { background: #fff3cd; color: #856404; }
+
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pageBtn {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageBtn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: #f0f9ff;
+}
+
+.pageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-attachment: #f9f9f9;
+}
+
+.pageBtnActive {
+    background-color: var(--primary-color);
+    color: white !important;
+    border-color: var(--primary-color);
+}
+
+.pageBtnActive:hover {
+    background-color: #0084cf;
+    opacity: 1;
+}
+

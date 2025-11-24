@@ -1,14 +1,23 @@
 import type { AxiosResponse } from "axios";
 import { api } from "./client";
-import type { Advertisement, ChartActivityStats, ChartCategoriesStats, ChartDecisionsStats, Moderator, QueryParameters, RejectOrChangeAd, Status, SummaryStats } from "./types";
+import type { adsResponse, Advertisement, ChartActivityStats, ChartCategoriesStats, ChartDecisionsStats, Moderator, QueryParameters, RejectOrChangeAd, Status, SummaryStats } from "./types";
 
 export async function getAdvertisements (page: number, queryParameters: QueryParameters, status?: Status) {
-    const advertisements: AxiosResponse<Advertisement[]> = await api.get('/ads', { params: { page, limit: 10, status, queryParameters } })
+    const advertisements: AxiosResponse<adsResponse> = await api.get('/ads', { params: { page, limit: 10, status, ...queryParameters } })
     if (advertisements.status === 200) {
         return advertisements.data
     }
     
     return new Error('Ошибка при загрузке объявлений')
+}
+
+export async function getAdvertisement (id: number) {
+    const advertisement: AxiosResponse<Advertisement> = await api.get(`/ads/${id}`)
+
+    if (advertisement.status === 200) {
+        return advertisement.data
+    }
+    return new Error('Ошибка при загрузке объявления');
 }
 
 export async function approveAd (id: number) {
@@ -22,7 +31,7 @@ export async function approveAd (id: number) {
 }
 
 export async function rejectAd (id: number, rejectData: RejectOrChangeAd) {
-    const response = await api.post(`/ads/{id}/reject`, rejectData);
+    const response = await api.post(`/ads/${id}/reject`, rejectData);
 
     if (response.status === 200) {
         return 'Объявление успешно откланено'
@@ -32,22 +41,13 @@ export async function rejectAd (id: number, rejectData: RejectOrChangeAd) {
 }
 
 export async function changeAd(id: number, changeData: RejectOrChangeAd) {
-    const response = await api.post(`/ads/{id}/request-changes`, changeData);
+    const response = await api.post(`/ads/${id}/request-changes`, changeData);
 
     if (response.status === 200) {
         return 'Объявление успешно изменено'
     }
 
     return new Error('Ошибка при изменении объявления');
-}
-
-export async function getAdvertisement (id: number) {
-    const advertisement: AxiosResponse<Advertisement> = await api.get(`/ads/${id}`)
-
-    if (advertisement.status === 200) {
-        return advertisement.data
-    }
-    return new Error('Ошибка при загрузке объявления');
 }
 
 export function getStats () {

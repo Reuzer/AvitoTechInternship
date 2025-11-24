@@ -22,3 +22,5 @@ npm run dev
 ```
 
 axios - дописать
+recharts - дописать
+tanstack query - дописать
