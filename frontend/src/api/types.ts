@@ -4,7 +4,7 @@ export type Priority = 'normal' | 'urgent'
 export type RejectionReasons = 'Запрещенный товар' | 'Неверная категория' | 'Некорректное описание' | 'Проблемы с фото' | 'Подозрение на мошенничество' | 'Другое'
 
 export interface RejectOrChangeAd {
-    reason: 'Запрещенный товар' | 'Неверная категория' | 'Некорректное описание' | 'Проблемы с фото' | 'Подозрение на мошенничеств' | 'Другое',
+    reason: RejectionReasons | '',
     comment: string,
 }
 
@@ -14,7 +14,7 @@ export interface ModerationHistory {
     moderatorName: string,
     action: Status,
     reason: RejectionReasons | null,
-    comment: 'Объявление не соответствует правилам платформы' | 'Объявление прошло модерацию успешно',
+    comment: string,
     timestamp: string,
 }
 
@@ -52,10 +52,10 @@ export interface adsResponse {
 
 export interface QueryParameters {
     status?: Status[],
-    id: number | null,
+    categoryId: number | null,
     minPrice: number | null,
     maxPrice: number | null,
-    searchQuery: string;
+    search: string;
     sortBy: 'createdAt' | 'price' | 'priority'
     sortOrder: 'asc' | 'desc'
 }

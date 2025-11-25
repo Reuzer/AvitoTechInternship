@@ -3,6 +3,7 @@ import styles from './App.module.css';
 import { BrowserRouter, Navigate, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import clsx from 'clsx';
 import AdsList from './pages/adsList/AdsList';
+import AdDetail from './pages/adsDetail/AdDetail';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +55,7 @@ const App = () => {
           <Route path='/' element={<Layout />}>
             <Route index element={<Navigate to='/list' replace/>} />
             <Route path='list' element={<AdsList />} />
+            <Route path='item/:id' element={<AdDetail/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -6,9 +6,9 @@ export async function getAdvertisements (page: number, queryParameters: QueryPar
     const advertisements: AxiosResponse<adsResponse> = await api.get('/ads', { params: { page, limit: 10, status, ...queryParameters } })
     if (advertisements.status === 200) {
         return advertisements.data
+    } else {
+        throw new Error('Ошибка при загрузке объявлений')
     }
-    
-    return new Error('Ошибка при загрузке объявлений')
 }
 
 export async function getAdvertisement (id: number) {
@@ -16,8 +16,10 @@ export async function getAdvertisement (id: number) {
 
     if (advertisement.status === 200) {
         return advertisement.data
+    } else {
+        throw new Error('Ошибка при загрузке объявления');
     }
-    return new Error('Ошибка при загрузке объявления');
+    
 }
 
 export async function approveAd (id: number) {
