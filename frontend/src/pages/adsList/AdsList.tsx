@@ -266,7 +266,7 @@ const AdsList = () => {
                 <div>Загрузка...</div>
             ) : (
                 <div className={styles.grid}>
-                    {(data as adsResponse).ads.map((ad, index) => (
+                    {(data as adsResponse).ads.map((ad) => (
                         <div key={ad.id} className={styles.card} onClick={() => navigate(`/item/${ad.id}`, {
                             state: { allIds: currentIds } 
                         })} >

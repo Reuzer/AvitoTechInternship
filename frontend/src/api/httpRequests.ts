@@ -57,32 +57,36 @@ export function getStats () {
         const summaryStats: AxiosResponse<SummaryStats> = await api.get('/stats/summary');
         if(summaryStats.status === 200) {
             return summaryStats.data;
+        } else {
+            throw new Error('Ошибка при загрузке статистики')
         }
-        return new Error('Ошибка при загрузке статистики')
     }
 
     async function getChartActivityStats() {
         const activityStats: AxiosResponse<ChartActivityStats> = await api.get('/stats/chart/activity')
         if(activityStats.status === 200) {
             return activityStats.data;
+        } else {
+            throw new Error('Ошибка при загрузке статистики')
         }
-        return new Error('Ошибка при загрузке статистики')
     }
 
     async function getChartDecisionsStats() {
         const decisionsStats: AxiosResponse<ChartDecisionsStats> = await api.get('/stats/chart/decisions') 
         if(decisionsStats.status === 200) {
             return decisionsStats.data
-        }
-        return new Error('Ошибка при загрузке статистики')
+        } 
+         
     }
 
     async function getChartCategoriesStats() {
         const categoriesStats: AxiosResponse<ChartCategoriesStats> = await api.get('/stats/chart/categories')
         if(categoriesStats.status === 200){
             return categoriesStats.data
+        } else {
+            throw new Error('Ошибка при загрузке статистики')
         }
-        return new Error('Ошибка при загрузке статистики')
+        
     }
 
     return {getSummaryStats, getChartActivityStats, getChartDecisionsStats, getChartCategoriesStats}
@@ -93,6 +97,7 @@ export async function getModerator() {
 
     if (moderator.status === 200) {
         return moderator.data
+    } else {
+        throw new Error('Ошибка при загрузке данных о модераторе');
     }
-    return new Error('Ошибка при загрузке данных о модераторе');
 }

@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, NavLink, Outlet, Route, Routes } from 'react-r
 import clsx from 'clsx';
 import AdsList from './pages/adsList/AdsList';
 import AdDetail from './pages/adsDetail/AdDetail';
+import Stats from './pages/stats/Stats';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -56,6 +57,7 @@ const App = () => {
             <Route index element={<Navigate to='/list' replace/>} />
             <Route path='list' element={<AdsList />} />
             <Route path='item/:id' element={<AdDetail/>}/>
+            <Route path='stats' element={<Stats />} />
           </Route>
         </Routes>
       </BrowserRouter>
